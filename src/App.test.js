@@ -1,8 +1,16 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+const FILES = [
+  {"fileType":"jpg","size":"4.3MB","name":"me on skis.jpg","status":"Synced"},
+  {"fileType":"mov","size":"1.3GB","name":"cats falling.mov","status":"Uploaded"},
+  {"fileType":"txt","size":"0.9KB","name":"My December expenses.txt","status":"Uploaded"},
+  {"fileType":"mp3","size":"3.4MB","name":"disturbed_sound_of_silence.mp3","status":"New"},
+];
+
+it('renders withouth crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App files={FILES} />, div);
+  ReactDOM.unmountComponentAtNode(div);
 });
